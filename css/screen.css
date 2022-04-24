@@ -26,8 +26,6 @@ body {
   padding: 1rem;
   font-family: "Antarctica Var Web", monospace;
   line-height: 1.5;
-  /* font-weight: 900; */
-  font-variation-settings: "wght"900;
   -webkit-font-smoothing: antialiased;
   transition: all .25s;
 }
@@ -116,7 +114,7 @@ a:any-link {
 }
 
 .char {
-  font-variation-settings: "wght"950, "wdth"1;
+  font-variation-settings: "wght" 950, "wdth" 1;
   display: inline-block;
   transition: font-variation-settings .5s;
   vertical-align: -.08em;
@@ -124,23 +122,19 @@ a:any-link {
 
 
 .char:nth-child(1) {
-  font-variation-settings: "wght"950,
-    "wdth"1;
+  font-variation-settings: "wght" 950, "wdth" 1;
 }
 
 .char:nth-child(2) {
-  font-variation-settings: "wght"300,
-    "wdth"1;
+  font-variation-settings: "wght" 300, "wdth" 1;
 }
 
 .char:nth-child(3) {
-  font-variation-settings: "wght"950,
-    "wdth"1;
+  font-variation-settings: "wght" 950, "wdth" 1;
 }
 
 .char:nth-child(4) {
-  font-variation-settings: "wght"500,
-    "wdth"1;
+  font-variation-settings: "wght" 500, "wdth" 1;
 }
 
 /* .char--o {
@@ -170,12 +164,12 @@ a:any-link {
   fill: currentColor;
 }
 
-.controls__radio:checked+.controls__text {
-  font-variation-settings: "wght"600;
+.controls__radio:checked + .controls__text {
+  font-variation-settings: "wght" 600;
 }
 
 .controls__text {
   display: block;
-  font-variation-settings: "wght"400;
+  font-variation-settings: "wght" 400;
   transition: all .1s;
 }
