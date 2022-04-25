@@ -26,7 +26,7 @@ body {
   font-family: "Antarctica Var Web", sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  transition: all .25s;
+  transition: all 0.25s;
   color: #07377a;
   background-color: #a2faaa;
 }
@@ -71,7 +71,6 @@ a:any-link {
   outline-color: currentColor;
 }
 
-
 a:any-link {
   text-decoration: underline;
 }
@@ -115,27 +114,26 @@ a:any-link {
 }
 
 .char {
-  font-variation-settings: "wght"950, "wdth"1;
+  font-variation-settings: "wght" 950, "wdth" 1;
   display: inline-block;
-  transition: font-variation-settings .5s;
-  vertical-align: -.08em;
+  transition: font-variation-settings 0.5s;
+  vertical-align: -0.08em;
 }
 
-
 .char:nth-child(1) {
-  font-variation-settings: "wght"950, "wdth"1;
+  font-variation-settings: "wght" 950, "wdth" 1;
 }
 
 .char:nth-child(2) {
-  font-variation-settings: "wght"300, "wdth"1;
+  font-variation-settings: "wght" 300, "wdth" 1;
 }
 
 .char:nth-child(3) {
-  font-variation-settings: "wght"950, "wdth"1;
+  font-variation-settings: "wght" 950, "wdth" 1;
 }
 
 .char:nth-child(4) {
-  font-variation-settings: "wght"500, "wdth"1;
+  font-variation-settings: "wght" 500, "wdth" 1;
 }
 
 /* .char--o {
@@ -160,17 +158,17 @@ a:any-link {
 }
 
 .app__reload-svg {
-  transition: transform .5s;
+  transition: transform 0.5s;
   width: 3rem;
   fill: currentColor;
 }
 
 .controls__radio:checked + .controls__text {
-  font-variation-settings: "wght"600;
+  font-variation-settings: "wght" 600;
 }
 
 .controls__text {
   display: block;
-  font-variation-settings: "wght"400;
-  transition: all .1s;
+  font-variation-settings: "wght" 400;
+  transition: all 0.1s;
 }
