@@ -175,18 +175,6 @@ reloadButton.addEventListener('click', function () {
     rotateElement(reloadSvg);
 });
 
-// select the radio buttons inside choiceElement 
-//const radioButtons = choiceElement.getElementsByTagName('input');
-
-// set the text-transform property to the value of the selected radio button
-// choiceElement.onchange = function () {
-//     for (var i = 0; i < radioButtons.length; i++) {
-//         if (radioButtons[i].checked) {
-//             nameElement.style.textTransform = radioButtons[i].value;
-//         }
-//     }
-// }
-
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
         document.getElementsByTagName('html')[0].classList.remove('not-loaded');
