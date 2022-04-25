@@ -187,6 +187,11 @@ reloadButton.addEventListener('click', function () {
 //     }
 // }
 
+document.onreadystatechange = function () {
+    if (document.readyState == "complete") {
+        document.getElementsByTagName('html')[0].classList.remove('not-loaded');
+    }
+}
 
 
 

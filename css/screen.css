@@ -16,18 +16,19 @@
   font-size: 100%;
 }
 
-html {
-  color: #07377a;
-  background-color: #a2faaa;
+.not-loaded {
+  visibility: hidden;
 }
 
 body {
   min-height: 100vh;
   padding: 1rem;
-  font-family: "Antarctica Var Web", monospace;
+  font-family: "Antarctica Var Web", sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   transition: all .25s;
+  color: #07377a;
+  background-color: #a2faaa;
 }
 
 img,
