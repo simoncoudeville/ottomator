@@ -1,8 +1,15 @@
-@font-face {
+/* @font-face {
   font-family: "Antarctica Var Web";
   font-style: normal;
   font-display: auto;
   src: url("../fonts/Antarctica-VF.ttf") format("truetype-variations");
+} */
+
+@font-face {
+  font-family: "Antarctica Var Web";
+  font-style: normal;
+  font-display: auto;
+  src: url("../fonts/Antarctica-VF.woff2") format("woff2 supports variations"), url("../fonts/Antarctica-VF.woff2") format("woff2-variations");
 }
 
 :root {
@@ -70,16 +77,15 @@ ol {
   padding: 0;
 }
 
+button {
+  all: unset;
+}
+
 button,
 a:any-link {
-  all: unset;
   display: inline-block;
   outline: revert;
   outline-color: currentColor;
-}
-
-a:any-link {
-  text-decoration: underline;
 }
 
 .hide-accessible {
@@ -155,9 +161,20 @@ a:any-link {
 
 .app__nav {
   justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   bottom: var(--whitespace);
   right: var(--whitespace);
+  left: var(--whitespace);
+}
+
+.app__link {
+  font-size: 2rem;
+  text-decoration: none;
+  color: currentColor;
+  font-variation-settings: "wght" 800, "wdth" 10;
+  text-transform: uppercase;
 }
 
 .app__button {
