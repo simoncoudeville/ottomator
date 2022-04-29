@@ -55,27 +55,26 @@ button {
   all: unset;
 }
 
+svg {
+  display: block;
+}
+
 button,
 a:any-link {
   display: inline-block;
   outline: revert;
   outline-color: currentColor;
-  color: currentColor;
-  /* text-decoration-thickness: from-font; */
-  /* color: inherit; */
-  /* color: var(--global-textColor);
-  transition: all 0.5s var(--global-easeInOut); */
+  outline-width: 2px;
+  outline-offset: 2px;
+  border-radius: 2px;
+  color: var(--link-color, var(--global-textColor));
+  transition: color 0.5s var(--global-easeInOut);
 }
-/* 
-a,
-a:any-link,
-a:active,
-a:focus,
-a:visited,
-a:link {
-  color: currentColor;
-  color: inherit;
-} */
+
+button:focus-visible,
+a:focus-visible {
+  outline-style: solid;
+}
 
 .hide-accessible {
   position: absolute;
@@ -199,6 +198,7 @@ a:link {
 .about {
   --selection-backgroundColor: var(--global-backgroundColor);
   --selection-textColor: var(--global-textColor);
+  --link-color: var(--global-backgroundColor);
   position: fixed;
   top: 0;
   right: 0;
@@ -243,12 +243,16 @@ a:link {
 .about__content {
   display: grid;
   /* place-content: center; */
+  grid-template-columns: minmax(auto, 32em);
+  align-content: flex-start;
+}
+
+.about__content p {
   font-size: 5rem;
   --minFontSize: 2rem;
   --maxFontSize: 5rem;
   --scaler: 5vw;
   font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
-  grid-template-columns: minmax(auto, 16em);
 }
 
 .about__content * + * {
