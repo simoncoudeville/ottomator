@@ -195,6 +195,11 @@ a:focus-visible {
   text-decoration: underline;
 }
 
+.about-link {
+  text-decoration: none;
+  font-variation-settings: "wght" 800, "wdth" 80;
+}
+
 .about {
   --selection-backgroundColor: var(--global-backgroundColor);
   --selection-textColor: var(--global-textColor);
