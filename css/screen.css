@@ -34,10 +34,6 @@
   color: var(--selection-textColor, var(--global-backgroundColor));
 }
 
-.not-loaded {
-  visibility: hidden;
-}
-
 body {
   padding: var(--whitespace);
   font-family: "Antarctica Var Web", sans-serif;
@@ -47,7 +43,8 @@ body {
   line-height: 1.1;
   color: var(--global-textColor);
   background-color: var(--global-backgroundColor);
-  transition: all 0.5s var(--global-easeInOut);
+  transition: 0.5s var(--global-easeInOut);
+  transition-property: color, background-color;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -87,11 +84,32 @@ a:focus-visible {
   border: 0;
 }
 
+.loader {
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.25s var(--global-easeOut);
+}
+
+.not-loaded .loader {
+  visibility: visible;
+  opacity: 1;
+}
+
 .app {
   min-height: calc(100vh - var(--whitespace) * 2);
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: var(--whitespace);
+  transition: opacity 0.25s var(--global-easeOut);
+}
+
+.not-loaded .app {
+  /* visibility: hidden; */
+  opacity: 0;
 }
 
 .app__main {
@@ -109,7 +127,13 @@ a:focus-visible {
   display: inline-block;
   line-height: 0;
   text-transform: uppercase;
-  transition: transform 0.2s var(--global-easeInOut);
+  /* transition: 0.25s var(--global-easeInOut);
+  transition-property: opacity, transform; */
+}
+
+.not-loaded .name {
+  transform: scale(0.8);
+  opacity: 0;
 }
 
 .name__char {
@@ -145,6 +169,13 @@ a:focus-visible {
   bottom: var(--whitespace);
   right: var(--whitespace);
   left: var(--whitespace); */
+  /* transition: 0.5s var(--global-easeInOut); */
+  /* transition-delay: 0.1s; */
+}
+
+.not-loaded .app__nav {
+  transform: translateY(100%);
+  opacity: 0;
 }
 
 .app__header {
@@ -154,6 +185,13 @@ a:focus-visible {
   gap: 2rem;
   justify-content: space-between;
   /* font-family: "Space Mono", monospace; */
+  /* transition: 0.5s var(--global-easeInOut); */
+  /* transition-delay: 0.1s; */
+}
+
+.not-loaded .app__header {
+  transform: translateY(-100%);
+  opacity: 0;
 }
 
 .app__button {
@@ -267,4 +305,8 @@ a:focus-visible {
 .about::selection {
   background: var(--global-backgroundColor);
   color: var(--global-textColor);
+}
+
+.not-loaded .about {
+  visibility: hidden;
 }
