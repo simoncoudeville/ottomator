@@ -1,5 +1,3 @@
-// import Color from "https://colorjs.io/dist/color.esm.js";
-
 const nameElement = document.getElementById('name');
 const mainElement = document.getElementById('main');
 const reloadButton = document.getElementById('reload');
@@ -116,11 +114,13 @@ function setRandomFontProps() {
 
     for (var i = 0; i < chars.length; i++) {
         chars[i].style.setProperty('font-variation-settings', '"wght" ' + random(100, 950) + ', "wdth" ' + random(1, 1));
+        // save every char font variation settings to a separate local storage variable        
+        localStorage.setItem('font-variation-settings-' + i, chars[i].style.fontVariationSettings);
     }
 
     // save the colors to local storage
-    localStorage.setItem('colorLight', colorLight);
-    localStorage.setItem('colorDark', colorDark);
+    localStorage.setItem('backgroundColor', colors[0]);
+    localStorage.setItem('textColor', colors[1]);
 }
 
 // setRandomFontProps();
@@ -153,10 +153,27 @@ reloadButton.addEventListener('click', function () {
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
         //setRandomFontProps(localStorage.getItem('colorLight'), localStorage.getItem('colorDark'));
+        // set the body background color to colorLight from local storage
+        document.body.style.backgroundColor = localStorage.getItem('backgroundColor');
+        // set the css variable for the background color
+        document.documentElement.style.setProperty('--global-backgroundColor', localStorage.getItem('backgroundColor'));
+        // set the body color to colorDark from local storage
+        document.body.style.color = localStorage.getItem('textColor');
+        // set the css variable for the text color
+        document.documentElement.style.setProperty('--global-textColor', localStorage.getItem('textColor'));
+
+        // loop through all chars and set their font variation settings to the font variation settings from local storage
+        for (var i = 0; i < chars.length; i++) {
+            chars[i].style.setProperty('font-variation-settings', localStorage.getItem('font-variation-settings-' + i));
+        }
+
+        // if local storage is empty, setRandomFontProps();
+        if (localStorage.length === 0) {
+            setRandomFontProps();
+        }
 
         setTimeout(function () {
             document.querySelector('html').classList.remove('loading');
-            // setRandomFontProps with stored values            
         }, 1000);
     }
 }

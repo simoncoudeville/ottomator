@@ -11,8 +11,8 @@
   --global-easeInOut: cubic-bezier(1, 0, 0, 1); /* easeInOutExpo */
   --global-easeInOut: cubic-bezier(0.86, 0, 0.07, 1); /* easeInOutQuint */
 
-  --global-backgroundColor: #a2faaa;
-  --global-textColor: #07377a;
+  /* --global-backgroundColor: #a2faaa;
+  --global-textColor: #07377a; */
 
   --whitespace: calc(1rem + 2vw);
 }
