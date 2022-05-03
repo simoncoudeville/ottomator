@@ -157,6 +157,19 @@ reloadButton.addEventListener('click', function () {
 // console log loaded after dom is loaded
 document.addEventListener('DOMContentLoaded', function () {
     console.log('loaded');
+
+    document.body.style.backgroundColor = localStorage.getItem('backgroundColor');
+    // set the css variable for the background color
+    document.documentElement.style.setProperty('--global-backgroundColor', localStorage.getItem('backgroundColor'));
+    // set the body color to colorDark from local storage
+    document.body.style.color = localStorage.getItem('textColor');
+    // set the css variable for the text color
+    document.documentElement.style.setProperty('--global-textColor', localStorage.getItem('textColor'));
+
+    // if local storage doesnt have a value for backgroundColor or textColor, set random colors
+    if (!localStorage.getItem('backgroundColor') || !localStorage.getItem('textColor')) {
+        setRandomColors();
+    }
 });
 
 // remove the loading class from the html tag and add a minumum loading time of 1 second
@@ -164,21 +177,14 @@ document.onreadystatechange = function () {
     if (document.readyState == "complete") {
         console.log("ready");
         // set the body background color to colorLight from local storage
-        document.body.style.backgroundColor = localStorage.getItem('backgroundColor');
-        // set the css variable for the background color
-        document.documentElement.style.setProperty('--global-backgroundColor', localStorage.getItem('backgroundColor'));
-        // set the body color to colorDark from local storage
-        document.body.style.color = localStorage.getItem('textColor');
-        // set the css variable for the text color
-        document.documentElement.style.setProperty('--global-textColor', localStorage.getItem('textColor'));
+
         // loop through all chars and set their font variation settings to the font variation settings from local storage
         for (var i = 0; i < chars.length; i++) {
             chars[i].style.setProperty('font-variation-settings', localStorage.getItem('font-variation-settings-' + i));
         }
 
-        // if local storage is empty, setRandomFontProps();
-        if (localStorage.length === 0) {
-            setRandomColors();
+        // if local storage doesnt have a value for font-variation-settings, set random font weight
+        if (!localStorage.getItem('font-variation-settings-' + i)) {
             setRandomFontProps();
         }
 
