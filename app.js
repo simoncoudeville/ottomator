@@ -1,21 +1,15 @@
-import Color from "https://colorjs.io/dist/color.esm.js";
+// import Color from "https://colorjs.io/dist/color.esm.js";
 
 const nameElement = document.getElementById('name');
+const mainElement = document.getElementById('main');
 const reloadButton = document.getElementById('reload');
 const reloadSvg = document.getElementsByClassName('js-reload-svg')[0];
-const choiceElement = document.getElementById('textTransformChoice');
 const chars = nameElement.getElementsByClassName('js-char');
 
 let aboutIsOpen = false;
 
 let textCase = "uppercase";
 
-// create 3 variables for 3 cases: colorjs, randomcolor.js and customrandomcolor
-let colorjs = false;
-let randomcolorjs = true;
-let customrandomcolor = false;
-
-let frontandback = true;
 let shufflefrontandback = false;
 
 // set the reload svg to 0deg
@@ -30,11 +24,6 @@ function random(min, max) {
 // or a number before 0 if the number is smaller than 360
 function calcHue(num) {
     return num > 360 ? num - 360 : num;
-}
-
-// a function that sets a hsl value
-function generateColors(hue, saturation, lightness) {
-    return 'hsl(' + hue + ',' + saturation + '%,' + lightness + '%)';
 }
 
 function setRandomFontProps() {
@@ -92,41 +81,16 @@ function setRandomFontProps() {
 
     let colorLight = "";
     let colorDark = "";
-    let colorBright = "";
 
-    if (colorjs) {
-        console.log('colorjs is true');
+    colorLight = randomColor({
+        luminosity: 'light',
+        hue: hue1
+    });
 
-        colorLight = new Color("lch", [80, 30, hue1]).to("hsl").toString();
-
-        colorDark = new Color("lch", [50, 50, hue2]).to("hsl").toString();
-
-        colorBright = new Color("lch", [70, 200, baseHue]).to("hsl").toString();
-
-    } else if (randomcolorjs) {
-
-        colorLight = randomColor({
-            luminosity: 'light',
-            hue: hue1
-        });
-
-        colorDark = randomColor({
-            luminosity: 'dark',
-            hue: hue2
-        });
-
-        colorBright = randomColor({
-            luminosity: 'bright',
-            hue: baseHue
-        });
-
-    } else if (customrandomcolor) {
-        colorLight = generateColors(hue1, random(70, 90), random(70, 90));
-        colorDark = generateColors(hue2, random(40, 60), random(30, 40));
-        colorBright = generateColors(baseHue, random(60, 100), random(35, 70));
-    }
-
-    // console.log(colorLight, colorDark, colorBright);
+    colorDark = randomColor({
+        luminosity: 'dark',
+        hue: hue2
+    });
 
     // create an array of color objects
     const colors = [colorLight, colorDark];
@@ -141,33 +105,22 @@ function setRandomFontProps() {
         colors.sort(() => Math.random() - 0.5);
     }
 
-    if (frontandback) {
-        // set the body background color to the first color in the array
-        document.body.style.backgroundColor = colors[0];
-        // set the css variable for the background color
-        document.documentElement.style.setProperty('--global-backgroundColor', colors[0]);
-        // set the body color to the second color in the array
-        document.body.style.color = colors[1];
-        // set the css variable for the text color
-        document.documentElement.style.setProperty('--global-textColor', colors[1]);
-    } else {
-        document.body.style.color = colorBright;
-    }
+    // set the body background color to the first color in the array
+    document.body.style.backgroundColor = colors[0];
+    // set the css variable for the background color
+    document.documentElement.style.setProperty('--global-backgroundColor', colors[0]);
+    // set the body color to the second color in the array
+    document.body.style.color = colors[1];
+    // set the css variable for the text color
+    document.documentElement.style.setProperty('--global-textColor', colors[1]);
 
     for (var i = 0; i < chars.length; i++) {
-        // check if uppercase equals "uppercase"
-        // if (textCase === "uppercase") {
-        console.log(chars[i]);
         chars[i].style.setProperty('font-variation-settings', '"wght" ' + random(100, 950) + ', "wdth" ' + random(1, 1));
-        // if its a letter O, set different font-variation-settings
-        // if (chars[i].classList.contains('char--o')) {
-        //     chars[i].style.setProperty('font-variation-settings', '"wght" ' + random(100, 950) + ', "wdth" ' + random(1, 1));
-        // }
-        // }
-        // else {
-        //     chars[i].style.setProperty('font-variation-settings', '"wght" ' + random(100, 950) + ', "wdth" ' + random(1, 100));
-        // }
     }
+
+    // save the colors to local storage
+    localStorage.setItem('colorLight', colorLight);
+    localStorage.setItem('colorDark', colorDark);
 }
 
 // setRandomFontProps();
@@ -196,60 +149,16 @@ reloadButton.addEventListener('click', function () {
     }
 });
 
+// remove the loading class from the html tag and add a minumum loading time of 1 second
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
-        document.getElementsByTagName('html')[0].classList.remove('not-loaded');
+        //setRandomFontProps(localStorage.getItem('colorLight'), localStorage.getItem('colorDark'));
+
+        setTimeout(function () {
+            document.querySelector('html').classList.remove('loading');
+            // setRandomFontProps with stored values            
+        }, 1000);
     }
-}
-
-// function toggleAbout() {
-//     let toggleTrigger = document.querySelectorAll(".js-toggle-about");
-
-//     for (let i = 0; i < toggleTrigger.length; i++) {
-//         toggleTrigger[i].addEventListener("click", function () {
-//             document.querySelector("body").classList.toggle("open-about");
-//             // set aboutisopen to true or false
-//             aboutIsOpen = !aboutIsOpen;
-//         })
-//     }
-// }
-
-// toggleAbout();
-
-// toggle about when #about is in the url
-if (window.location.hash === '#about') {
-    document.querySelector("body").classList.toggle("open-about");
-    aboutIsOpen = true;
-}
-
-// toggle about when the back and forward buttons are pressed
-window.onpopstate = function (event) {
-    if (window.location.hash === '#about') {
-        document.querySelector("body").classList.add("open-about");
-        aboutIsOpen = true;
-    } else {
-        document.querySelector("body").classList.remove("open-about");
-        aboutIsOpen = false;
-    }
-}
-
-// select the radio buttons inside choiceElement 
-const radioButtons = choiceElement.getElementsByTagName('input');
-
-// set the text-transform property to the value of the selected radio button
-choiceElement.onchange = function () {
-    for (var i = 0; i < radioButtons.length; i++) {
-        if (radioButtons[i].checked) {
-            nameElement.style.textTransform = radioButtons[i].value;
-        }
-    }
-    // add a class to nameElement for 1 second
-    // nameElement.classList.add("flash");
-    // setTimeout(function () {
-    //     nameElement.classList.remove("flash");
-    // }
-    //     , 200);
-    // setRandomFontProps();
 }
 
 

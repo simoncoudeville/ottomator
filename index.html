@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="not-loaded">
+<html lang="en" class="loading">
 
 <head>
     <meta charset="utf-8">
@@ -16,40 +16,50 @@
 
 <body>
     <div class="loader">
-        Ottomating
+        <svg class="loader__svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 120 120" width="48" height="48">
+            xml:space="preserve">
+            <style>
+                circle {
+                    fill: none;
+                    stroke: currentColor;
+                    stroke-width: 20;
+                    transform-origin: 50% 50%;
+                }
+
+                .circle-rotate {
+                    stroke-dasharray: 188;
+                    animation: rotate .5s linear infinite;
+                }
+
+                .circle-background {
+                    opacity: .25;
+                }
+
+                @keyframes rotate {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+            </style>
+            <circle cx="60" cy="60" r="40" class="circle-background" />
+            <circle cx="60" cy="60" r="40" class="circle-rotate" />
+        </svg>
     </div>
-    <div class="app">
-        <header class="app__header">
-            <h1 class="app__title">Ottomator</h1>
-            <!--<a href="#about" class="about-link js-toggle-about">?</a>-->
-            <a href="#about" class="js-toggle-about">Info</a>
-        </header>
-        <main class="app__main" id="main">
+    <div class="main" id="main">
+        <div class="main__content">
             <p class="name" id="name">
                 <span class="name__char name__char--o js-char">O</span><span class="name__char js-char">t</span><span
                     class="name__char js-char">t</span><span class="name__char name__char--o js-char">o</span>
             </p>
-        </main>
-        <div class="app__nav">
-            <ul class="controls" id="textTransformChoice">
-                <li class="controls__item">
-                    <label class="controls__label" for="uppercase">
-                        <input class="hide-accessible controls__radio" type="radio" name="textTransformChoice"
-                            id="uppercase" value="uppercase" checked>
-                        <span class="controls__text">AA</span>
-                    </label>
-                </li>
-                <li class="controls__item">
-                    <label class="controls__label" for="initial">
-                        <input class="hide-accessible controls__radio" type="radio" name="textTransformChoice"
-                            id="initial" value="initial">
-                        <span class="controls__text">Aa</span>
-                    </label>
-                </li>
-
-            </ul>
-            <button class="app__button" id="reload">
-                <svg class="app__reload-svg js-reload-svg" xmlns="http://www.w3.org/2000/svg"
+        </div>
+        <div class="main__nav">
+            <button class="button" id="reload">
+                <svg class="button__reload-svg js-reload-svg" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120"
                     xml:space="preserve">
                     <g>
@@ -64,28 +74,6 @@
             </button>
         </div>
     </div>
-    <section class="about" id="about">
-        <div class="about__header">
-            <h2>About</h2>
-            <a href="#main" class="js-toggle-about">Close</a>
-            <!-- <a href="#main" class="js-toggle-about">&times;</a> -->
-        </div>
-        <div class="about__content">
-            <p>
-                Otto Coudeville is the son of Sarah &amp; Eewoud, born on July 16, 2022.
-            </p>
-            <p>
-                The Ottomator is an interactive birth announcment genarator created by his uncle <a
-                    href="https://simoncoudeville.be">Simon</a>.
-            </p>
-            <h3>
-                Other Info
-            </h3>
-            <p>
-                The font in use is Antarctica. Check out the code on Github.
-            </p>
-        </div>
-    </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js"></script>
     <script src="app.js" type="module"></script>
 </body>
