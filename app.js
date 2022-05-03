@@ -74,9 +74,6 @@ function setRandomColors() {
     const hue1 = hueArrays[0][0];
     const hue2 = hueArrays[0][1];
 
-    // console.log(hueArrays[0]);
-    // console.log(baseHue, hue1, hue2);
-
     let colorLight = "";
     let colorDark = "";
 
@@ -126,8 +123,6 @@ function setRandomFontProps() {
 
 }
 
-// setRandomFontProps();
-
 // create a function that rotates an element every time the function is called
 function rotateElement(element) {
     // get the current rotation value of the button
@@ -136,7 +131,7 @@ function rotateElement(element) {
     element.style.transform = 'rotate(' + (parseInt(currentRotation.split('(')[1].split('deg')[0]) + 360) + 'deg)';
 }
 
-// fetch colors and setrandom font weight when the r key is pressed only when aboutIsOpen is false
+// fetch colors and setrandom stuff when the r key is pressed only when aboutIsOpen is false
 document.onkeypress = function (e) {
     if (e.keyCode == 114 && !aboutIsOpen) {
         setRandomFontProps();
@@ -145,7 +140,7 @@ document.onkeypress = function (e) {
     }
 }
 
-// fetch colors and setrandom font weight when the reload button is pressed with an event listener when aboutIsOpen is false
+// fetch colors and setrandom stuff when the reload button is pressed with an event listener when aboutIsOpen is false
 reloadButton.addEventListener('click', function () {
     if (!aboutIsOpen) {
         setRandomFontProps();
@@ -154,10 +149,8 @@ reloadButton.addEventListener('click', function () {
     }
 });
 
-// console log loaded after dom is loaded
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('loaded');
-
+    // set the body background color to colorLight from local storage
     document.body.style.backgroundColor = localStorage.getItem('backgroundColor');
     // set the css variable for the background color
     document.documentElement.style.setProperty('--global-backgroundColor', localStorage.getItem('backgroundColor'));
@@ -175,8 +168,6 @@ document.addEventListener('DOMContentLoaded', function () {
 // remove the loading class from the html tag and add a minumum loading time of 1 second
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
-        console.log("ready");
-        // set the body background color to colorLight from local storage
 
         // loop through all chars and set their font variation settings to the font variation settings from local storage
         for (var i = 0; i < chars.length; i++) {
