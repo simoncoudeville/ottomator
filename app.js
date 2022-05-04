@@ -1,6 +1,7 @@
 const nameElement = document.getElementById('name');
 const mainElement = document.getElementById('main');
 const reloadButton = document.getElementById('reload');
+const saveButton = document.getElementById('save');
 const reloadSvg = document.getElementsByClassName('js-reload-svg')[0];
 const chars = nameElement.getElementsByClassName('js-char');
 
@@ -147,6 +148,12 @@ reloadButton.addEventListener('click', function () {
         setRandomColors();
         rotateElement(reloadSvg);
     }
+});
+
+// when the save button is clicked take a screenshot of the page and save it to the user's desktop
+saveButton.addEventListener('click', function () {
+    console.log("save button clicked");
+    capture();
 });
 
 document.addEventListener('DOMContentLoaded', function () {
