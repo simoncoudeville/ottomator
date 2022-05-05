@@ -4,6 +4,13 @@ const reloadButton = document.getElementById('reload');
 const reloadSvg = document.getElementsByClassName('js-reload-svg')[0];
 const chars = nameElement.getElementsByClassName('js-char');
 
+// an array of colors
+// const backgroundColors = ['#9fbfdf', '#f2c8c0', '#f5ca3d', '#dce87d', '#a2a0cf'];
+// const backgroundColors = ['#e2f13c', '#f8c511', '#fbc0b4', '#c9dfe5', '#fddfa4'];
+// const backgroundColors = ['#F7D694', '#D8E673', '#91C2F2', '#A4A1E6', '#F2C0B6'];
+const backgroundColors = ['#ffe7b3', '#d3e4e9', '#fcd3c8'];
+// const backgroundColors = ['#1289e4', '#cf0069', '#e1740a', '#63a717'];
+
 let aboutIsOpen = false;
 
 let textCase = "uppercase";
@@ -24,76 +31,88 @@ function calcHue(num) {
     return num > 360 ? num - 360 : num;
 }
 
-function setRandomColors() {
-    const baseHue = random(0, 360);
+function calcHSL(hue) {
+    return `hsl(${hue}, ${random(50, 70)}%, ${random(40, 60)}%)`;
+}
+
+function getHue(H) {
+    // Convert hex to RGB first
+    let r = 0, g = 0, b = 0;
+    if (H.length == 4) {
+        r = "0x" + H[1] + H[1];
+        g = "0x" + H[2] + H[2];
+        b = "0x" + H[3] + H[3];
+    } else if (H.length == 7) {
+        r = "0x" + H[1] + H[2];
+        g = "0x" + H[3] + H[4];
+        b = "0x" + H[5] + H[6];
+    }
+    // Then to HSL
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    let cmin = Math.min(r, g, b),
+        cmax = Math.max(r, g, b),
+        delta = cmax - cmin,
+        h = 0,
+        s = 0,
+        l = 0;
+
+    if (delta == 0)
+        h = 0;
+    else if (cmax == r)
+        h = ((g - b) / delta) % 6;
+    else if (cmax == g)
+        h = (b - r) / delta + 2;
+    else
+        h = (r - g) / delta + 4;
+
+    h = Math.round(h * 60);
+
+    if (h < 0)
+        h += 360;
+
+    return h;
+}
+
+const setRandomColors2 = function () {
+    // get a random color from the array
+    const baseColor = backgroundColors[random(0, backgroundColors.length - 1)];
+    // const baseColor = backgroundColors[2];
+    // get the hue of the base color
+    const baseHue = getHue(baseColor);
     const complimentaryHue = calcHue(baseHue + 180);
     const splitComplimentaryHue1 = calcHue(complimentaryHue + 30);
     const splitComplimentaryHue2 = calcHue(complimentaryHue - 30);
     const analogousHue1 = calcHue(baseHue + 30);
-    const analogousHue2 = calcHue(baseHue + 60);
-    const analogousHue3 = calcHue(baseHue + 90);
-    const analogousHue4 = calcHue(baseHue + 120);
+    const analogousHue2 = calcHue(baseHue - 30);
     const triadicHue1 = calcHue(baseHue + 120);
     const triadicHue2 = calcHue(baseHue + 240);
     const tetradHue1 = calcHue(baseHue + 90);
-    const tetradHue2 = calcHue(baseHue + 180);
     const tetradHue3 = calcHue(baseHue + 270);
 
-    // create an array of complimentary hue values
-    const complimentaryHues = [baseHue, complimentaryHue];
-    complimentaryHues.name = "Complimentary";
-    // create an array of complimentary hue values
-    const splitComplimentaryHues1 = [baseHue, splitComplimentaryHue1];
-    splitComplimentaryHues1.name = "SplitComplimentary1";
-    // create an array of complimentary hue values
-    const splitComplimentaryHues2 = [baseHue, splitComplimentaryHue2];
-    splitComplimentaryHues2.name = "SplitComplimentary2";
-    // create an array of analogous hue values and base hue
-    const analogousHues = [baseHue, analogousHue1, analogousHue2, analogousHue3, analogousHue4];
-    analogousHues.name = "Analogous";
-    // create an array of triadic hue values and base hue
-    const triadicHues = [baseHue, triadicHue1, triadicHue2];
-    triadicHues.name = "Triadic";
-    // create an array of tetradhedral hue values and base hue
-    const tetradHues = [baseHue, tetradHue1, tetradHue2, tetradHue3];
-    tetradHues.name = "Tetrad";
-    // create an array of base hue
-    const baseHues = [baseHue, baseHue];
-    baseHues.name = "Monochrome";
+    // create an array of all the hue values
+    const fittingHues = [baseHue, complimentaryHue, splitComplimentaryHue1, splitComplimentaryHue2, analogousHue1, analogousHue2, triadicHue1, triadicHue2, tetradHue1, tetradHue3];
 
-    // create an array of all hue arrays
-    const hueArrays = [complimentaryHues, splitComplimentaryHues1, splitComplimentaryHues2, analogousHues, triadicHues, tetradHues, baseHues];
+    // get a rondom hue
+    const fittingHue = fittingHues[random(0, fittingHues.length - 1)];
+    // const fittingHue = analogousHue2;
 
-    // shuffle the hue arrays and the hue array inside each hue array
-    hueArrays.sort(() => Math.random() - 0.5);
-    hueArrays.forEach(function (hueArray) {
-        hueArray.sort(() => Math.random() - 0.5);
-    });
+    // set a variable randomly to 'bright' or 'dark'
+    const brightness = ['bright', 'dark'][random(0, 1)];
 
-    // get 2 hue valus from the same shuffled hue array
-    const hue1 = hueArrays[0][0];
-    const hue2 = hueArrays[0][1];
+    let colorBack = baseColor;
+    let colorFront = calcHSL(fittingHue);
 
-    let colorLight = "";
-    let colorDark = "";
-
-    colorLight = randomColor({
-        luminosity: 'light',
-        hue: hue1
-    });
-
-    colorDark = randomColor({
-        luminosity: 'dark',
-        hue: hue2
-    });
+    console.log(baseHue, fittingHue);
 
     // create an array of color objects
-    const colors = [colorLight, colorDark];
+    const colors = [colorBack, colorFront];
 
     // randomly replace colorDark with black
-    if (random(0, 10) === 10) {
-        colors[1] = 'black';
-    }
+    // if (random(0, 10) === 10) {
+    //     colors[1] = 'black';
+    // }
 
     // shuffle the colors array if shufflefrontandback is true
     if (shufflefrontandback) {
@@ -135,7 +154,7 @@ function rotateElement(element) {
 document.onkeypress = function (e) {
     if (e.keyCode == 114 && !aboutIsOpen) {
         setRandomFontProps();
-        setRandomColors();
+        setRandomColors2();
         rotateElement(reloadSvg);
     }
 }
@@ -144,7 +163,7 @@ document.onkeypress = function (e) {
 reloadButton.addEventListener('click', function () {
     if (!aboutIsOpen) {
         setRandomFontProps();
-        setRandomColors();
+        setRandomColors2();
         rotateElement(reloadSvg);
     }
 });
@@ -153,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // if local storage doesnt have a value for backgroundColor or textColor, set random colors
     if (!localStorage.getItem('backgroundColor') || !localStorage.getItem('textColor')) {
-        setRandomColors();
+        setRandomColors2();
     } else {
         // set the body background color to colorLight from local storage
         document.body.style.backgroundColor = localStorage.getItem('backgroundColor');
