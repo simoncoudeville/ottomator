@@ -8,7 +8,8 @@ const chars = nameElement.getElementsByClassName('js-char');
 // const backgroundColors = ['#9fbfdf', '#f2c8c0', '#f5ca3d', '#dce87d', '#a2a0cf'];
 // const backgroundColors = ['#e2f13c', '#f8c511', '#fbc0b4', '#c9dfe5', '#fddfa4'];
 // const backgroundColors = ['#F7D694', '#D8E673', '#91C2F2', '#A4A1E6', '#F2C0B6'];
-const backgroundColors = ['#ffe7b3', '#d3e4e9', '#fcd3c8'];
+// const backgroundColors = ['#ffe7b3', '#d3e4e9', '#fcd3c8'];
+const backgroundColors = ['#0d47a7', '#219ac7', '#81c226', '#fc960a', '#f5be0d', '#f30076', '#a3ba41', '#f00011'];
 // const backgroundColors = ['#1289e4', '#cf0069', '#e1740a', '#63a717'];
 
 let aboutIsOpen = false;
@@ -32,7 +33,15 @@ function calcHue(num) {
 }
 
 function calcHSL(hue) {
-    return `hsl(${hue}, ${random(50, 70)}%, ${random(40, 60)}%)`;
+    // return `hsl(${hue}, ${random(50, 70)}%, ${random(40, 60)}%)`;
+    // return `hsl(${hue}, ${random(50, 70)}%, ${random(20, 40)}%)`;
+    // return `hsl(${hue}, ${random(60, 80)}%, ${random(50, 80)}%)`;
+    // return `hsl(${hue}, ${random(80, 100)}%, ${random(50, 80)}%)`;
+    // return `hsl(${hue}, ${random(70, 90)}%, ${random(70, 80)}%)`;
+    // return `hsl(${hue}, ${random(80, 100)}%, ${random(60, 80)}%)`;
+    // return `hsl(${hue}, ${random(100, 100)}%, ${random(30, 30)}%)`;
+    // return `hsl(${hue}, ${random(100, 100)}%, ${random(40, 40)}%)`;
+    return `hsl(${hue}, ${random(100, 100)}%, ${random(40, 60)}%)`;
 }
 
 function getHue(H) {
@@ -77,8 +86,8 @@ function getHue(H) {
 
 const setRandomColors2 = function () {
     // get a random color from the array
-    const baseColor = backgroundColors[random(0, backgroundColors.length - 1)];
-    // const baseColor = backgroundColors[2];
+    // const baseColor = backgroundColors[random(0, backgroundColors.length - 1)];
+    const baseColor = backgroundColors[0];
     // get the hue of the base color
     const baseHue = getHue(baseColor);
     const complimentaryHue = calcHue(baseHue + 180);
@@ -95,8 +104,8 @@ const setRandomColors2 = function () {
     const fittingHues = [baseHue, complimentaryHue, splitComplimentaryHue1, splitComplimentaryHue2, analogousHue1, analogousHue2, triadicHue1, triadicHue2, tetradHue1, tetradHue3];
 
     // get a rondom hue
-    const fittingHue = fittingHues[random(0, fittingHues.length - 1)];
-    // const fittingHue = analogousHue2;
+    // const fittingHue = fittingHues[random(0, fittingHues.length - 1)];
+    const fittingHue = complimentaryHue;
 
     // set a variable randomly to 'bright' or 'dark'
     const brightness = ['bright', 'dark'][random(0, 1)];
