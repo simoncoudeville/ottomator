@@ -9,7 +9,8 @@ const chars = nameElement.getElementsByClassName('js-char');
 // const backgroundColors = ['#e2f13c', '#f8c511', '#fbc0b4', '#c9dfe5', '#fddfa4'];
 // const backgroundColors = ['#F7D694', '#D8E673', '#91C2F2', '#A4A1E6', '#F2C0B6'];
 // const backgroundColors = ['#ffe7b3', '#d3e4e9', '#fcd3c8'];
-const backgroundColors = ['#0d47a7', '#219ac7', '#81c226', '#fc960a', '#f5be0d', '#f30076', '#a3ba41', '#f00011'];
+const backgroundColors = ['#fbcabf', '#a6cdde', '#f7ca0b', '#cee1e7', '#f3dac4', '#e8e2d6', '#fba804', '#208ab4', '#9caacd', '#c7af45', '#98a76c'];
+// const backgroundColors = ['#0d47a7', '#1e90bf', '#81c226', '#fc960a', '#f5be0d', '#f30076', '#a3ba41', '#f00011'];
 // const backgroundColors = ['#1289e4', '#cf0069', '#e1740a', '#63a717'];
 
 let aboutIsOpen = false;
@@ -27,9 +28,15 @@ function random(min, max) {
 }
 
 // a calculation function that returns a number after 0 if the number is larger than 360 
-// or a number before 0 if the number is smaller than 360
+// or a number before 360 if the number is smaller than 0
 function calcHue(num) {
-    return num > 360 ? num - 360 : num;
+    if (num > 360) {
+        return num - 360;
+    } else if (num < 0) {
+        return num + 360;
+    } else {
+        return num;
+    }
 }
 
 function calcHSL(hue) {
@@ -78,16 +85,20 @@ function getHue(H) {
 
     h = Math.round(h * 60);
 
-    if (h < 0)
-        h += 360;
+    if (h > 360) {
+        return h - 360;
+    } else if (h < 0) {
+        return h + 360;
+    } else {
+        return h;
+    }
 
-    return h;
 }
 
 const setRandomColors2 = function () {
     // get a random color from the array
-    // const baseColor = backgroundColors[random(0, backgroundColors.length - 1)];
-    const baseColor = backgroundColors[0];
+    const baseColor = backgroundColors[random(0, backgroundColors.length - 1)];
+    // const baseColor = backgroundColors[0];
     // get the hue of the base color
     const baseHue = getHue(baseColor);
     const complimentaryHue = calcHue(baseHue + 180);
@@ -104,14 +115,20 @@ const setRandomColors2 = function () {
     const fittingHues = [baseHue, complimentaryHue, splitComplimentaryHue1, splitComplimentaryHue2, analogousHue1, analogousHue2, triadicHue1, triadicHue2, tetradHue1, tetradHue3];
 
     // get a rondom hue
-    // const fittingHue = fittingHues[random(0, fittingHues.length - 1)];
-    const fittingHue = complimentaryHue;
+    const fittingHue = fittingHues[random(0, fittingHues.length - 1)];
+    // let fittingHue = fittingHues[9];
 
-    // set a variable randomly to 'bright' or 'dark'
+    // set a variable randomly to 'bright' or 'dark' or 'light'
+    // const brightness = ['bright', 'dark'][random(0, 1)];
     const brightness = ['bright', 'dark'][random(0, 1)];
 
-    let colorBack = baseColor;
-    let colorFront = calcHSL(fittingHue);
+    const colorBack = baseColor;
+    // let colorFront = calcHSL(fittingHue);
+
+    const colorFront = randomColor({
+        luminosity: brightness,
+        hue: fittingHue
+    });
 
     console.log(baseHue, fittingHue);
 
