@@ -9,9 +9,85 @@ const chars = nameElement.getElementsByClassName('js-char');
 // const backgroundColors = ['#e2f13c', '#f8c511', '#fbc0b4', '#c9dfe5', '#fddfa4'];
 // const backgroundColors = ['#F7D694', '#D8E673', '#91C2F2', '#A4A1E6', '#F2C0B6'];
 // const backgroundColors = ['#ffe7b3', '#d3e4e9', '#fcd3c8'];
-const backgroundColors = ['#fbcabf', '#a6cdde', '#f7ca0b', '#cee1e7', '#f3dac4', '#e8e2d6', '#fba804', '#208ab4', '#9caacd', '#c7af45', '#98a76c'];
+const backgroundColors = ['#fbcabf', '#a6cdde', '#f7ca0b', '#cee1e7', '#f3dac4', '#e8e2d6', '#fba804', '#208ab4', '#9caacd', '#c7af45', '#98a76c', '#f9e9c7'];
 // const backgroundColors = ['#0d47a7', '#1e90bf', '#81c226', '#fc960a', '#f5be0d', '#f30076', '#a3ba41', '#f00011'];
 // const backgroundColors = ['#1289e4', '#cf0069', '#e1740a', '#63a717'];
+
+//01, 03, 07, 11, 28, 31, 34, 44, 45, 46, 62, 71, 72, 94
+
+// an object that contains a color and a name
+const color01 = {
+    name: '01',
+    color: '#a6cdde'
+}
+
+const color03 = {
+    name: '03',
+    color: '#98a76c'
+}
+
+const color07 = {
+    name: '07',
+    color: '#f9e9c7'
+}
+
+const color11 = {
+    name: '11',
+    color: '#facabe'
+}
+
+const color28 = {
+    name: '28',
+    color: '#c7af45'
+}
+
+const color31 = {
+    name: '31',
+    color: '#cee1e7'
+}
+
+const color34 = {
+    name: '34',
+    color: '#208ab4'
+}
+
+const color44 = {
+    name: '44',
+    color: '#9caacd'
+}
+
+const color45 = {
+    name: '45',
+    color: '#d4d2cd'
+}
+
+const color46 = {
+    name: '46',
+    color: '#fde4b1'
+}
+
+const color62 = {
+    name: '62',
+    color: '#cee1e7'
+}
+
+const color71 = {
+    name: '71',
+    color: '#f3dac4'
+}
+
+const color72 = {
+    name: '72',
+    color: '#e8e2d6'
+}
+
+const color94 = {
+    name: '94',
+    color: '#fba804'
+}
+
+// an array of the different color objects ranked by their name
+const bgColors = [color01, color03, color07, color11, color28, color31, color34, color44, color45, color46, color62, color71, color72, color94];
 
 let aboutIsOpen = false;
 
@@ -97,9 +173,14 @@ function getHue(H) {
 
 const setRandomColors2 = function () {
     // get a random color from the array
-    const baseColor = backgroundColors[random(0, backgroundColors.length - 1)];
+    // const baseColor = backgroundColors[random(0, backgroundColors.length - 1)];
     // const baseColor = backgroundColors[0];
     // get the hue of the base color
+    // get a random color from bgColors
+    const baseColorObj = bgColors[random(0, bgColors.length - 1)];
+    // get the color value from the object
+    const baseColor = baseColorObj.color;
+    console.log(baseColorObj.name);
     const baseHue = getHue(baseColor);
     const complimentaryHue = calcHue(baseHue + 180);
     const splitComplimentaryHue1 = calcHue(complimentaryHue + 30);
@@ -130,7 +211,7 @@ const setRandomColors2 = function () {
         hue: fittingHue
     });
 
-    console.log(baseHue, fittingHue);
+    // console.log(baseHue, fittingHue);
 
     // create an array of color objects
     const colors = [colorBack, colorFront];
