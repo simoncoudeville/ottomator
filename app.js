@@ -46,9 +46,24 @@ const color31 = {
     color: '#cee1e7'
 }
 
+const color32 = {
+    name: '32',
+    color: '#a1cd52'
+}
+
 const color34 = {
     name: '34',
     color: '#208ab4'
+}
+
+const color35 = {
+    name: '35',
+    color: '#f27834'
+}
+
+const color36 = {
+    name: '36',
+    color: '#da518d'
 }
 
 const color44 = {
@@ -81,13 +96,30 @@ const color72 = {
     color: '#e8e2d6'
 }
 
+const color90 = {
+    name: '90',
+    color: '#368a93'
+}
+
+const color92 = {
+    name: '92',
+    color: '#f32013'
+}
+
 const color94 = {
     name: '94',
     color: '#fba804'
 }
 
+const color99 = {
+    name: '99',
+    color: '#e8ebed'
+}
+
 // an array of the different color objects ranked by their name
-const bgColors = [color01, color03, color07, color11, color28, color31, color34, color44, color45, color46, color62, color71, color72, color94];
+// const bgColors = [color01, color03, color07, color11, color28, color31, color34, color44, color45, color46, color62, color71, color72, color94];
+const bgColors = [color62, color01, color11, color46, color71, color99];
+// const bgColors = [color31, color32, color34, color35, color36, color90, color92, color94];
 
 let aboutIsOpen = false;
 
@@ -200,8 +232,9 @@ const setRandomColors2 = function () {
     // let fittingHue = fittingHues[9];
 
     // set a variable randomly to 'bright' or 'dark' or 'light'
-    // const brightness = ['bright', 'dark'][random(0, 1)];
+    // const brightness = 'dark';
     const brightness = ['bright', 'dark'][random(0, 1)];
+    // const brightness = ['bright', 'light'][random(0, 1)];
 
     const colorBack = baseColor;
     // let colorFront = calcHSL(fittingHue);
