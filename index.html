@@ -50,6 +50,14 @@
         </svg>
     </div>
     <div class="main" id="main">
+
+        <header class="main__header">
+            <h1>
+                Ottomator
+            </h1>
+            <a href="#about">Info</a>
+        </header>
+
         <div class="main__content">
             <p class="name" id="name">
                 <span class="name__char name__char--o js-char">O</span><span class="name__char js-char">t</span><span
@@ -57,6 +65,10 @@
             </p>
         </div>
         <div class="main__nav">
+            <!-- <a href="#about">Info</a> -->
+            <!-- <p>
+                Ottomator V1.0 <br>
+            </p> -->
             <button class="button" id="reload">
                 <svg class="button__reload-svg js-reload-svg" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120"
@@ -73,8 +85,29 @@
             </button>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js"></script>
-    <script src="app.js" type="module"></script>
+    <div class="about" id="about">
+        <div class="about__header">
+            <h2>Info</h2>
+            <a href="#main" class="js-toggle-about">Close</a>
+            <!-- <a href="#main" class="js-toggle-about">&times;</a> -->
+        </div>
+        <div class="about__content">
+            <p>
+                Otto Coudeville is the son of Sarah &amp; Eewoud, born on July 16, 2022.
+            </p>
+            <p>
+                The Ottomator is an interactive birth announcment genarator created by his uncle <a
+                    href="https://simoncoudeville.be">Simon</a>.
+            </p>
+            <h3>
+                Other Info
+            </h3>
+            <p>
+                The font in use is Antarctica. Check out the code on Github.
+            </p>
+        </div>
+    </div>
+    <script src="./scripts/main.js" type="module"></script>
 </body>
 
 </html>

@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "randomcolor": "^0.6.2"
+  },
+  "name": "Ottomator",
+  "version": "1.0.0",
+  "description": "Generate random Otto's",
+  "main": "index.js",
+  "devDependencies": {
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simoncoudeville/ottomator.git"
+  },
+  "author": "Simon Coudeville",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simoncoudeville/ottomator/issues"
+  },
+  "homepage": "https://github.com/simoncoudeville/ottomator#readme"
+}

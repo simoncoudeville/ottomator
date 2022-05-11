@@ -1,99 +1,12 @@
+import _ from 'randomcolor';
+
+const randomColor = require('randomcolor');
 const nameElement = document.getElementById('name');
-const mainElement = document.getElementById('main');
 const reloadButton = document.getElementById('reload');
 const reloadSvg = document.getElementsByClassName('js-reload-svg')[0];
 const chars = nameElement.getElementsByClassName('js-char');
 
-// an array of colors
-// const backgroundColors = ['#9fbfdf', '#f2c8c0', '#f5ca3d', '#dce87d', '#a2a0cf'];
-// const backgroundColors = ['#e2f13c', '#f8c511', '#fbc0b4', '#c9dfe5', '#fddfa4'];
-// const backgroundColors = ['#F7D694', '#D8E673', '#91C2F2', '#A4A1E6', '#F2C0B6'];
-// const backgroundColors = ['#ffe7b3', '#d3e4e9', '#fcd3c8'];
-const backgroundColors = ['#fbcabf', '#a6cdde', '#f7ca0b', '#cee1e7', '#f3dac4', '#e8e2d6', '#fba804', '#208ab4', '#9caacd', '#c7af45', '#98a76c', '#f9e9c7'];
-// const backgroundColors = ['#0d47a7', '#1e90bf', '#81c226', '#fc960a', '#f5be0d', '#f30076', '#a3ba41', '#f00011'];
-// const backgroundColors = ['#1289e4', '#cf0069', '#e1740a', '#63a717'];
-
-//01, 03, 07, 11, 28, 31, 34, 44, 45, 46, 62, 71, 72, 94
-
-// an object that contains a color and a name
-const color01 = {
-    name: '01',
-    color: '#a6cdde'
-}
-
-const color03 = {
-    name: '03',
-    color: '#98a76c'
-}
-
-const color07 = {
-    name: '07',
-    color: '#f9e9c7'
-}
-
-const color11 = {
-    name: '11',
-    color: '#facabe'
-}
-
-const color28 = {
-    name: '28',
-    color: '#c7af45'
-}
-
-const color31 = {
-    name: '31',
-    color: '#cee1e7'
-}
-
-const color34 = {
-    name: '34',
-    color: '#208ab4'
-}
-
-const color44 = {
-    name: '44',
-    color: '#9caacd'
-}
-
-const color45 = {
-    name: '45',
-    color: '#d4d2cd'
-}
-
-const color46 = {
-    name: '46',
-    color: '#fde4b1'
-}
-
-const color62 = {
-    name: '62',
-    color: '#cee1e7'
-}
-
-const color71 = {
-    name: '71',
-    color: '#f3dac4'
-}
-
-const color72 = {
-    name: '72',
-    color: '#e8e2d6'
-}
-
-const color94 = {
-    name: '94',
-    color: '#fba804'
-}
-
-// an array of the different color objects ranked by their name
-const bgColors = [color01, color03, color07, color11, color28, color31, color34, color44, color45, color46, color62, color71, color72, color94];
-
 let aboutIsOpen = false;
-
-let textCase = "uppercase";
-
-let shufflefrontandback = false;
 
 // set the reload svg to 0deg
 reloadSvg.style.transform = 'rotate(0deg)';
@@ -114,74 +27,8 @@ function calcHue(num) {
         return num;
     }
 }
-
-function calcHSL(hue) {
-    // return `hsl(${hue}, ${random(50, 70)}%, ${random(40, 60)}%)`;
-    // return `hsl(${hue}, ${random(50, 70)}%, ${random(20, 40)}%)`;
-    // return `hsl(${hue}, ${random(60, 80)}%, ${random(50, 80)}%)`;
-    // return `hsl(${hue}, ${random(80, 100)}%, ${random(50, 80)}%)`;
-    // return `hsl(${hue}, ${random(70, 90)}%, ${random(70, 80)}%)`;
-    // return `hsl(${hue}, ${random(80, 100)}%, ${random(60, 80)}%)`;
-    // return `hsl(${hue}, ${random(100, 100)}%, ${random(30, 30)}%)`;
-    // return `hsl(${hue}, ${random(100, 100)}%, ${random(40, 40)}%)`;
-    return `hsl(${hue}, ${random(100, 100)}%, ${random(40, 60)}%)`;
-}
-
-function getHue(H) {
-    // Convert hex to RGB first
-    let r = 0, g = 0, b = 0;
-    if (H.length == 4) {
-        r = "0x" + H[1] + H[1];
-        g = "0x" + H[2] + H[2];
-        b = "0x" + H[3] + H[3];
-    } else if (H.length == 7) {
-        r = "0x" + H[1] + H[2];
-        g = "0x" + H[3] + H[4];
-        b = "0x" + H[5] + H[6];
-    }
-    // Then to HSL
-    r /= 255;
-    g /= 255;
-    b /= 255;
-    let cmin = Math.min(r, g, b),
-        cmax = Math.max(r, g, b),
-        delta = cmax - cmin,
-        h = 0,
-        s = 0,
-        l = 0;
-
-    if (delta == 0)
-        h = 0;
-    else if (cmax == r)
-        h = ((g - b) / delta) % 6;
-    else if (cmax == g)
-        h = (b - r) / delta + 2;
-    else
-        h = (r - g) / delta + 4;
-
-    h = Math.round(h * 60);
-
-    if (h > 360) {
-        return h - 360;
-    } else if (h < 0) {
-        return h + 360;
-    } else {
-        return h;
-    }
-
-}
-
-const setRandomColors2 = function () {
-    // get a random color from the array
-    // const baseColor = backgroundColors[random(0, backgroundColors.length - 1)];
-    // const baseColor = backgroundColors[0];
-    // get the hue of the base color
-    // get a random color from bgColors
-    const baseColorObj = bgColors[random(0, bgColors.length - 1)];
-    // get the color value from the object
-    const baseColor = baseColorObj.color;
-    console.log(baseColorObj.name);
-    const baseHue = getHue(baseColor);
+const setRandomColors = function () {
+    const baseHue = random(0, 360);
     const complimentaryHue = calcHue(baseHue + 180);
     const splitComplimentaryHue1 = calcHue(complimentaryHue + 30);
     const splitComplimentaryHue2 = calcHue(complimentaryHue - 30);
@@ -197,21 +44,17 @@ const setRandomColors2 = function () {
 
     // get a rondom hue
     const fittingHue = fittingHues[random(0, fittingHues.length - 1)];
-    // let fittingHue = fittingHues[9];
 
-    // set a variable randomly to 'bright' or 'dark' or 'light'
-    // const brightness = ['bright', 'dark'][random(0, 1)];
-    const brightness = ['bright', 'dark'][random(0, 1)];
-
-    const colorBack = baseColor;
-    // let colorFront = calcHSL(fittingHue);
+    const colorBack = randomColor({
+        luminosity: 'light',
+        hue: baseHue
+    });
 
     const colorFront = randomColor({
-        luminosity: brightness,
+        luminosity: 'dark',
         hue: fittingHue
     });
 
-    // console.log(baseHue, fittingHue);
 
     // create an array of color objects
     const colors = [colorBack, colorFront];
@@ -220,11 +63,6 @@ const setRandomColors2 = function () {
     // if (random(0, 10) === 10) {
     //     colors[1] = 'black';
     // }
-
-    // shuffle the colors array if shufflefrontandback is true
-    if (shufflefrontandback) {
-        colors.sort(() => Math.random() - 0.5);
-    }
 
     // set the body background color to the first color in the array
     document.body.style.backgroundColor = colors[0];
@@ -261,7 +99,7 @@ function rotateElement(element) {
 document.onkeypress = function (e) {
     if (e.keyCode == 114 && !aboutIsOpen) {
         setRandomFontProps();
-        setRandomColors2();
+        setRandomColors();
         rotateElement(reloadSvg);
     }
 }
@@ -270,7 +108,7 @@ document.onkeypress = function (e) {
 reloadButton.addEventListener('click', function () {
     if (!aboutIsOpen) {
         setRandomFontProps();
-        setRandomColors2();
+        setRandomColors();
         rotateElement(reloadSvg);
     }
 });
@@ -279,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // if local storage doesnt have a value for backgroundColor or textColor, set random colors
     if (!localStorage.getItem('backgroundColor') || !localStorage.getItem('textColor')) {
-        setRandomColors2();
+        setRandomColors();
     } else {
         // set the body background color to colorLight from local storage
         document.body.style.backgroundColor = localStorage.getItem('backgroundColor');
@@ -310,6 +148,23 @@ document.onreadystatechange = function () {
         setTimeout(function () {
             document.querySelector('html').classList.remove('loading');
         }, 1000);
+    }
+}
+
+// toggle about when #about is in the url
+if (window.location.hash === '#about') {
+    document.querySelector("body").classList.toggle("open-about");
+    aboutIsOpen = true;
+}
+
+// toggle about when the back and forward buttons are pressed
+window.onpopstate = function (event) {
+    if (window.location.hash === '#about') {
+        document.querySelector("body").classList.add("open-about");
+        aboutIsOpen = true;
+    } else {
+        document.querySelector("body").classList.remove("open-about");
+        aboutIsOpen = false;
     }
 }
 
