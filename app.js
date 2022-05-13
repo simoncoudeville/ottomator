@@ -118,7 +118,7 @@ const color99 = {
 
 // an array of the different color objects ranked by their name
 // const bgColors = [color01, color03, color07, color11, color28, color31, color34, color44, color45, color46, color62, color71, color72, color94];
-const bgColors = [color62, color01, color11, color46, color71, color99];
+const bgColors = [color62, color11, color46];
 // const bgColors = [color31, color32, color34, color35, color36, color90, color92, color94];
 
 let aboutIsOpen = false;
@@ -210,6 +210,7 @@ const setRandomColors2 = function () {
     // get the hue of the base color
     // get a random color from bgColors
     const baseColorObj = bgColors[random(0, bgColors.length - 1)];
+    // const baseColorObj = bgColors[2];
     // get the color value from the object
     const baseColor = baseColorObj.color;
     console.log(baseColorObj.name);
@@ -232,8 +233,8 @@ const setRandomColors2 = function () {
     // let fittingHue = fittingHues[9];
 
     // set a variable randomly to 'bright' or 'dark' or 'light'
-    // const brightness = 'dark';
-    const brightness = ['bright', 'dark'][random(0, 1)];
+    const brightness = 'dark';
+    // const brightness = ['bright', 'dark'][random(0, 1)];
     // const brightness = ['bright', 'light'][random(0, 1)];
 
     const colorBack = baseColor;
