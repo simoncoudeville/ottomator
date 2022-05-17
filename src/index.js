@@ -96,7 +96,7 @@ const setRandomColors = function () {
 
 function setRandomFontProps() {
     for (var i = 0; i < chars.length; i++) {
-        chars[i].style.setProperty('font-variation-settings', '"wght" ' + random(100, 950) + ', "wdth" ' + random(1, 1));
+        chars[i].style.setProperty('font-variation-settings', '"wght" ' + random(100, 800) + ', "wdth" ' + random(1, 1));
         // save every char font variation settings to a separate local storage variable        
         localStorage.setItem('font-variation-settings-' + i, chars[i].style.fontVariationSettings);
     }
