@@ -1,4 +1,5 @@
 import _ from 'randomcolor';
+import chroma from "chroma-js";
 
 const randomColor = require('randomcolor');
 const nameElement = document.getElementById('name');
@@ -29,6 +30,7 @@ function calcHue(num) {
 }
 const setRandomColors = function () {
     const baseHue = random(0, 360);
+    // const baseHue = 180;
     const complimentaryHue = calcHue(baseHue + 180);
     const splitComplimentaryHue1 = calcHue(complimentaryHue + 30);
     const splitComplimentaryHue2 = calcHue(complimentaryHue - 30);
@@ -44,17 +46,31 @@ const setRandomColors = function () {
 
     // get a rondom hue
     const fittingHue = fittingHues[random(0, fittingHues.length - 1)];
+    // const fittingHue = fittingHues[9];
 
-    const colorBack = randomColor({
-        luminosity: 'light',
-        hue: baseHue
-    });
+    // const colorBack = randomColor({
+    //     luminosity: 'light',
+    //     hue: baseHue
+    // });
 
     const colorFront = randomColor({
         luminosity: 'dark',
         hue: fittingHue
     });
 
+    let colorBack = chroma.hcl(baseHue, 30, 90);
+    // const colorFront = chroma.hcl(fittingHue, 80, 60);
+    // let colorFront = chroma.hcl(fittingHue, 90, 60);
+    // if fittinghue is between 60 and 120 set the colorFront to a lighter color
+    // if (fittingHue > 60 && fittingHue < 120) {
+    //     colorFront = chroma.hcl(fittingHue, 90, 75);
+    // } else if (fittingHue > 180 && fittingHue < 320) {
+    //     colorFront = chroma.hcl(fittingHue, 70, 40);
+    // }
+    // const colorFront = chroma.hcl(fittingHue, 100, random(60, 80));
+    // const colorFront = chroma.hcl(fittingHue, random(80, 100), random(40, 70));
+
+    // console.log(baseHue, fittingHue);
 
     // create an array of color objects
     const colors = [colorBack, colorFront];
