@@ -170,8 +170,8 @@ a:focus-visible {
 
 .name {
   --minFontSize: 15rem;
-  --maxFontSize: 60rem;
-  --scaler: 45vw;
+  --maxFontSize: 55rem;
+  --scaler: 80vw;
   font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
   display: inline-block;
   line-height: 0;
