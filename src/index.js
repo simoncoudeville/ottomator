@@ -30,7 +30,6 @@ function calcHue(num) {
 }
 const setRandomColors = function () {
     const baseHue = random(0, 360);
-    // const baseHue = 180;
     const complimentaryHue = calcHue(baseHue + 180);
     const splitComplimentaryHue1 = calcHue(complimentaryHue + 30);
     const splitComplimentaryHue2 = calcHue(complimentaryHue - 30);
@@ -59,26 +58,10 @@ const setRandomColors = function () {
     });
 
     let colorBack = chroma.hcl(baseHue, 30, 90);
-    // const colorFront = chroma.hcl(fittingHue, 80, 60);
-    // let colorFront = chroma.hcl(fittingHue, 90, 60);
-    // if fittinghue is between 60 and 120 set the colorFront to a lighter color
-    // if (fittingHue > 60 && fittingHue < 120) {
-    //     colorFront = chroma.hcl(fittingHue, 90, 75);
-    // } else if (fittingHue > 180 && fittingHue < 320) {
-    //     colorFront = chroma.hcl(fittingHue, 70, 40);
-    // }
-    // const colorFront = chroma.hcl(fittingHue, 100, random(60, 80));
     // const colorFront = chroma.hcl(fittingHue, random(80, 100), random(40, 70));
-
-    // console.log(baseHue, fittingHue);
 
     // create an array of color objects
     const colors = [colorBack, colorFront];
-
-    // randomly replace colorDark with black
-    // if (random(0, 10) === 10) {
-    //     colors[1] = 'black';
-    // }
 
     // set the body background color to the first color in the array
     document.body.style.backgroundColor = colors[0];
@@ -95,12 +78,28 @@ const setRandomColors = function () {
 }
 
 function setRandomFontProps() {
-    for (var i = 0; i < chars.length; i++) {
-        chars[i].style.setProperty('font-variation-settings', '"wght" ' + random(100, 800) + ', "wdth" ' + random(1, 1));
-        // save every char font variation settings to a separate local storage variable        
-        localStorage.setItem('font-variation-settings-' + i, chars[i].style.fontVariationSettings);
+
+    const maxTotalWght = 2400;
+
+    let wght1 = random(200, 400);
+    let wght2 = random(400, 600);
+    let wght3 = random(600, 800);
+    let totalWght = wght1 + wght2 + wght3;
+    let wght4 = maxTotalWght - totalWght;
+    if (wght4 > 800) {
+        wght4 = 800;
     }
 
+    let wghts = [wght1, wght2, wght3, wght4];
+    // shuffle the array
+    wghts.sort(() => Math.random() - 0.5);
+
+    for (var i = 0; i < chars.length; i++) {
+        // chars[i].style.setProperty('font-variation-settings', '"wght" ' + random(400, 800) + ', "wdth" ' + 1);
+        chars[i].style.setProperty('font-variation-settings', '"wght" ' + wghts[i] + ', "wdth" ' + 1);
+        // save every char font variation settings to a separate local storage variable                
+        localStorage.setItem('font-variation-settings-' + i, chars[i].style.fontVariationSettings);
+    }
 }
 
 // create a function that rotates an element every time the function is called

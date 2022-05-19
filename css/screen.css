@@ -38,7 +38,7 @@
 body {
   will-change: color, background-color;
   font-family: "Antarctica Var Web", sans-serif;
-  font-variation-settings: "wght" 800, "wdth" 10;
+  font-variation-settings: "wght" 800, "wdth" 15;
   text-transform: uppercase;
   font-size: 2rem;
   line-height: 1;
@@ -309,21 +309,23 @@ a:focus-visible {
   justify-content: center;
   align-content: center;
   /* align-content: flex-start; */
-  text-align: center;
+  /* text-align: center; */
 }
 
 .about__content p {
-  max-width: 15em;
+  max-width: 17em;
   font-size: 5rem;
   --minFontSize: 2rem;
-  --maxFontSize: 5rem;
-  --scaler: 5vw;
+  --maxFontSize: 6rem;
+  --scaler: 5.65vw;
   font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
+  hyphens: auto;
+  text-align: justify;
 }
 
 .about__content > * + * {
   /* margin-top: calc(var(--whitespace) * 2); */
-  margin-top: var(--whitespace);
+  /* margin-top: var(--whitespace); */
 }
 
 .loading .about {
