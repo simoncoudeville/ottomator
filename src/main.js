@@ -1,7 +1,6 @@
-import _ from 'randomcolor';
+import randomColor from 'randomcolor';
 import chroma from "chroma-js";
 
-const randomColor = require('randomcolor');
 const nameElement = document.getElementById('name');
 const reloadButton = document.getElementById('reload');
 const reloadSvg = document.getElementsByClassName('js-reload-svg')[0];
@@ -52,23 +51,20 @@ const setRandomColors = function () {
     //     hue: baseHue
     // });
 
+    const colorBack = chroma.hcl(baseHue, 30, 90);
+
     const colorFront = randomColor({
         luminosity: 'dark',
         hue: fittingHue
     });
 
-    let colorBack = chroma.hcl(baseHue, 30, 90);
     // const colorFront = chroma.hcl(fittingHue, random(80, 100), random(40, 70));
 
     // create an array of color objects
     const colors = [colorBack, colorFront];
 
-    // set the body background color to the first color in the array
-    document.body.style.backgroundColor = colors[0];
     // set the css variable for the background color
     document.documentElement.style.setProperty('--global-backgroundColor', colors[0]);
-    // set the body color to the second color in the array
-    document.body.style.color = colors[1];
     // set the css variable for the text color
     document.documentElement.style.setProperty('--global-textColor', colors[1]);
 
@@ -134,12 +130,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!localStorage.getItem('backgroundColor') || !localStorage.getItem('textColor')) {
         setRandomColors();
     } else {
-        // set the body background color to colorLight from local storage
-        document.body.style.backgroundColor = localStorage.getItem('backgroundColor');
         // set the css variable for the background color
         document.documentElement.style.setProperty('--global-backgroundColor', localStorage.getItem('backgroundColor'));
-        // set the body color to colorDark from local storage
-        document.body.style.color = localStorage.getItem('textColor');
         // set the css variable for the text color
         document.documentElement.style.setProperty('--global-textColor', localStorage.getItem('textColor'));
     }
