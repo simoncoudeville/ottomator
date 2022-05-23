@@ -1,4 +1,4 @@
-# ottomator
+# Ottomator
 
 Run npm install to install packages
 
