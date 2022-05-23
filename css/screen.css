@@ -35,21 +35,24 @@
   color: var(--selection-textColor, var(--global-backgroundColor));
 }
 
-body {
+html {
   will-change: color, background-color;
   font-family: "Antarctica Var Web", sans-serif;
   font-variation-settings: "wght" 800, "wdth" 15;
   text-transform: uppercase;
-  font-size: 2rem;
-  line-height: 1;
   color: var(--global-textColor);
   background-color: var(--global-backgroundColor);
+  transition: var(--global-duration-2) var(--global-easeInOut);
+  transition-property: color, background-color;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-size: 2rem;
+  line-height: 1;
   min-height: 100vh;
   display: grid;
   grid-template-rows: 1fr;
-  -webkit-font-smoothing: antialiased;
-  transition: var(--global-duration-2) var(--global-easeInOut);
-  transition-property: color, background-color;
 }
 
 /* body.open-about {
