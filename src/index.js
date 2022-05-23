@@ -1,7 +1,6 @@
-import _ from 'randomcolor';
+import randomColor from 'randomcolor';
 import chroma from "chroma-js";
 
-const randomColor = require('randomcolor');
 const nameElement = document.getElementById('name');
 const reloadButton = document.getElementById('reload');
 const reloadSvg = document.getElementsByClassName('js-reload-svg')[0];
@@ -57,7 +56,7 @@ const setRandomColors = function () {
         hue: fittingHue
     });
 
-    let colorBack = chroma.hcl(baseHue, 30, 90);
+    const colorBack = chroma.hcl(baseHue, 30, 90);
     // const colorFront = chroma.hcl(fittingHue, random(80, 100), random(40, 70));
 
     // create an array of color objects

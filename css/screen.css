@@ -175,7 +175,7 @@ a:focus-visible {
   font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
   display: inline-block;
   line-height: 0;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   transition-duration: var(--global-duration-1);
   transition-timing-function: var(--global-easeInOut);
   transition-property: opacity, transform;
@@ -320,13 +320,11 @@ a:focus-visible {
   --scaler: 5.65vw;
   font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
   hyphens: auto;
-  text-align: justify;
 }
-
+/* 
 .about__content > * + * {
-  /* margin-top: calc(var(--whitespace) * 2); */
-  /* margin-top: var(--whitespace); */
-}
+  margin-top: var(--whitespace);
+} */
 
 .loading .about {
   visibility: hidden;
