@@ -2,4 +2,4 @@
 
 Run npm install to install packages
 
-Run npm webpack build or serve to compile
+Webpack is used to compile main.js with the needed dependencies so run npm webpack build or serve to compile.
