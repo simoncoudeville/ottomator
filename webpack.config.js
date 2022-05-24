@@ -4,7 +4,7 @@ module.exports = {
     entry: './src/main.js',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'scripts'),
+        path: path.resolve(__dirname, 'js'),
         clean: true,
     },
     mode: 'production',
