@@ -176,6 +176,9 @@ a:focus-visible {
   --maxFontSize: 55rem;
   --scaler: 80vw;
   font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
+  font-size: clamp(15rem, 7rem + 40vw, 55rem);
+  font-size: clamp(15rem, 5.588rem + 47.06vw, 55rem);
+  font-size: clamp(15rem, -3.824rem + 94.12vw, 55rem);
   display: inline-block;
   line-height: 0;
   /* text-transform: uppercase; */
