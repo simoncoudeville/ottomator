@@ -27,9 +27,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cleanup": "rm -rf dist/*",
-    "start": "parcel",
-    "watch": "parcel watch",
-    "build": "parcel build"
+    "clean-dist": "rm -rf dist && mkdir dist",
+    "copy-assets": "cp -r src/assets/* dist",
+    "init": "npm run clean-dist && npm run copy-assets",
+    "start": "npm run init && parcel",
+    "build": "npm run init && parcel build"
   }
 }
