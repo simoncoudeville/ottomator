@@ -1,13 +1,14 @@
 {
     "name": "OTTOMATOR",
     "short_name": "OTTO",
+    "start_url": "/",
     "icons": [
         {
             "src": "google-touch-icon.png",
             "sizes": "512x512"
         }
     ],
-    "theme_color": "#07377a",
-    "background_color": "#a2faaa",
+    "theme_color": "#398934",
+    "background_color": "#FBCBBF",
     "display": "standalone"
 }

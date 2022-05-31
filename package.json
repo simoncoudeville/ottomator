@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.5.0",
+    "@parcel/service-worker": "^2.6.0",
     "@parcel/transformer-webmanifest": "^2.5.0",
     "parcel": "^2.5.0"
   },
@@ -27,7 +28,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean-dist": "rm -rf dist && mkdir dist",
+    "clean-dist": "rm -rf .parcel-cache dist && mkdir dist",
     "copy-assets": "cp -r src/assets/* dist",
     "init": "npm run clean-dist && npm run copy-assets",
     "start": "npm run init && parcel",
