@@ -14,8 +14,7 @@
   "homepage": "https://github.com/simoncoudeville/ottomator#readme",
   "dependencies": {
     "chroma-js": "^2.4.2",
-    "randomcolor": "^0.6.2",
-    "workbox-precaching": "^6.5.3"
+    "randomcolor": "^0.6.2"
   },
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.5.0",
