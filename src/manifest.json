@@ -1,14 +1,18 @@
 {
     "name": "OTTOMATOR",
+    "description": "make your own Otto with the Ottomator",
     "short_name": "OTTO",
     "start_url": "/",
+    "scope": "/",
     "icons": [
         {
             "src": "google-touch-icon.png",
-            "sizes": "512x512"
+            "sizes": "512x512",
+            "purpose": "maskable"
         }
     ],
-    "theme_color": "#398934",
+    "theme_color": "#000",
     "background_color": "#FBCBBF",
-    "display": "standalone"
+    "display": "standalone",
+    "orientation": "portrait"
 }

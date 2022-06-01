@@ -12,6 +12,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.ottomator.be">
     <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#000" />
 
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
@@ -106,7 +107,7 @@
     <script type="module">
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register(
-                new URL('./sw.js', import.meta.url),
+                new URL('./pwabuilder-adv-sw.js', import.meta.url),
                 { type: 'module' }
             );
         }
