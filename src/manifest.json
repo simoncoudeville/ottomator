@@ -11,7 +11,7 @@
             "purpose": "any"
         },
         {
-            "src": "google-touch-icon.png",
+            "src": "maskable-icon-x512.png",
             "sizes": "512x512",
             "purpose": "maskable"
         }
