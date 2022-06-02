@@ -13,6 +13,7 @@
     <meta property="og:url" content="https://www.ottomator.be">
     <meta name="twitter:card" content="summary">
     <meta name="theme-color" content="#000" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
@@ -104,18 +105,6 @@
         </div>
     </div>
     <script src="./js/main.js" type="module"></script>
-    <script type="module">
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register(
-                new URL('./sw.js', import.meta.url),
-                { type: 'module' }
-            );
-        }
-        // var r; r = new URL("./sw.js", import.meta.url).toString(), "serviceWorker" in navigator && navigator.serviceWorker.register(r);
-        // if ("serviceWorker" in navigator) {
-        //     navigator.serviceWorker.register("./sw.js");
-        // }
-    </script>
 </body>
 
 </html>

@@ -20,7 +20,9 @@
     "@parcel/packager-raw-url": "^2.5.0",
     "@parcel/service-worker": "^2.6.0",
     "@parcel/transformer-webmanifest": "^2.5.0",
-    "parcel": "^2.5.0"
+    "parcel": "^2.5.0",
+    "workbox-build": "^6.5.3",
+    "workbox-cli": "^6.5.3"
   },
   "source": "src/index.html",
   "htmlnano": {
@@ -32,6 +34,6 @@
     "copy-assets": "cp -r src/assets/* dist",
     "init": "npm run clean-dist && npm run copy-assets",
     "start": "npm run init && parcel",
-    "build": "npm run init && parcel build"
+    "build": "npm run init && parcel build && workbox generateSW"
   }
 }
