@@ -104,18 +104,6 @@
         </div>
     </div>
     <script src="./js/main.js" type="module"></script>
-    <script type="module">
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register(
-                new URL('./sw.js', import.meta.url),
-                { type: 'module' }
-            );
-        }
-        // var r; r = new URL("./sw.js", import.meta.url).toString(), "serviceWorker" in navigator && navigator.serviceWorker.register(r);
-        // if ("serviceWorker" in navigator) {
-        //     navigator.serviceWorker.register("./sw.js");
-        // }
-    </script>
 </body>
 
 </html>
