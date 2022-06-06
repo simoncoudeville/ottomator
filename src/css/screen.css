@@ -10,6 +10,9 @@
   --global-easeIn: cubic-bezier(0.47, 0, 0.76, 1); /* easeInQuint */
   --global-easeInOut: cubic-bezier(0.86, 0, 0.07, 1); /* easeInOutQuint */
 
+  --global-backgroundColor: #f7d0d2;
+  --global-textColor: #4ea672;
+
   --whitespace: calc(1rem + 2vw);
   --whitespace: calc(1rem + 1vw);
 
