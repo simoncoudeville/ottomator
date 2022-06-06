@@ -161,14 +161,14 @@ document.onreadystatechange = function () {
 }
 
 // toggle about when #about is in the url
-if (window.location.hash === '#about') {
+if (window.location.hash === '#aboutEN' || window.location.hash === '#aboutNL') {
     document.querySelector("body").classList.toggle("open-about");
     aboutIsOpen = true;
 }
 
 // toggle about when the back and forward buttons are pressed
 window.onpopstate = function (event) {
-    if (window.location.hash === '#about') {
+    if (window.location.hash === '#aboutEN' || window.location.hash === '#aboutNL') {
         document.querySelector("body").classList.add("open-about");
         aboutIsOpen = true;
     } else {
