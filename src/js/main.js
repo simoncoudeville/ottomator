@@ -69,8 +69,8 @@ const setRandomColors = function () {
     document.documentElement.style.setProperty('--global-textColor', colors[1]);
 
     // save the colors to local storage
-    localStorage.setItem('backgroundColor', colors[0]);
-    localStorage.setItem('textColor', colors[1]);
+    // localStorage.setItem('backgroundColor', colors[0]);
+    // localStorage.setItem('textColor', colors[1]);
 }
 
 function setRandomFontProps() {
@@ -94,7 +94,7 @@ function setRandomFontProps() {
         // chars[i].style.setProperty('font-variation-settings', '"wght" ' + random(400, 800) + ', "wdth" ' + 1);
         chars[i].style.setProperty('font-variation-settings', '"wght" ' + wghts[i] + ', "wdth" ' + 1);
         // save every char font variation settings to a separate local storage variable                
-        localStorage.setItem('font-variation-settings-' + i, chars[i].style.fontVariationSettings);
+        // localStorage.setItem('font-variation-settings-' + i, chars[i].style.fontVariationSettings);
     }
 }
 
@@ -124,33 +124,35 @@ reloadButton.addEventListener('click', function () {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
 
-    // if local storage doesnt have a value for backgroundColor or textColor, set random colors
-    if (!localStorage.getItem('backgroundColor') || !localStorage.getItem('textColor')) {
-        setRandomColors();
-    } else {
-        // set the css variable for the background color
-        document.documentElement.style.setProperty('--global-backgroundColor', localStorage.getItem('backgroundColor'));
-        // set the css variable for the text color
-        document.documentElement.style.setProperty('--global-textColor', localStorage.getItem('textColor'));
-    }
+//     // if local storage doesnt have a value for backgroundColor or textColor, set random colors
+//     if (!localStorage.getItem('backgroundColor') || !localStorage.getItem('textColor')) {
+//         setRandomColors();
+//     } else {
+//         // set the css variable for the background color
+//         document.documentElement.style.setProperty('--global-backgroundColor', localStorage.getItem('backgroundColor'));
+//         // set the css variable for the text color
+//         document.documentElement.style.setProperty('--global-textColor', localStorage.getItem('textColor'));
+//     }
 
-});
+// });
 
 // remove the loading class from the html tag and add a minumum loading time of 1 second
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
 
         // if local storage doesnt have an item with a key that starts with font-variation-settings, set random font props
-        if (!localStorage.getItem('font-variation-settings-0')) {
-            setRandomFontProps();
-        } else {
-            // loop through all chars and set their font variation settings to the font variation settings from local storage
-            for (var i = 0; i < chars.length; i++) {
-                chars[i].style.setProperty('font-variation-settings', localStorage.getItem('font-variation-settings-' + i));
-            }
-        }
+        // if (!localStorage.getItem('font-variation-settings-0')) {
+        //     setRandomFontProps();
+        // } else {
+        //     // loop through all chars and set their font variation settings to the font variation settings from local storage
+        //     for (var i = 0; i < chars.length; i++) {
+        //         chars[i].style.setProperty('font-variation-settings', localStorage.getItem('font-variation-settings-' + i));
+        //     }
+        // }
+
+        setRandomFontProps();
 
         setTimeout(function () {
             document.querySelector('html').classList.remove('loading');
