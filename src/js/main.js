@@ -161,20 +161,38 @@ document.onreadystatechange = function () {
 }
 
 // toggle about when #about is in the url
-if (window.location.hash === '#aboutEN' || window.location.hash === '#aboutNL') {
-    document.querySelector("body").classList.toggle("open-about");
+if (window.location.hash === '#about') {
+    document.querySelector("body").classList.toggle("open-about-en");
+    aboutIsOpen = true;
+}
+
+if (window.location.hash === '#info') {
+    document.querySelector("body").classList.toggle("open-about-nl");
     aboutIsOpen = true;
 }
 
 // toggle about when the back and forward buttons are pressed
 window.onpopstate = function (event) {
-    if (window.location.hash === '#aboutEN' || window.location.hash === '#aboutNL') {
-        document.querySelector("body").classList.add("open-about");
+    if (window.location.hash === '#about') {
+        document.querySelector("body").classList.add("open-about-en");
         aboutIsOpen = true;
-    } else {
-        document.querySelector("body").classList.remove("open-about");
+    } else if (window.location.hash === '#info') {
+        document.querySelector("body").classList.add("open-about-nl");
+        aboutIsOpen = true;
+    }
+    else {
+        document.querySelector("body").classList.remove("open-about-nl");
+        document.querySelector("body").classList.remove("open-about-en");
         aboutIsOpen = false;
     }
+}
+
+// check the language of the browser and hide about-link-nl if it is not nl
+if (navigator.language !== 'nl') {
+    document.querySelector("#aboutLinkNL").style.display = 'none';
+} else {
+    document.querySelector("#aboutLinkNL").style.display = 'block';
+    document.querySelector("#aboutLinkEN").style.display = 'none';
 }
 
 if ('serviceWorker' in navigator) {
