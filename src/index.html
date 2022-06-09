@@ -12,7 +12,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.ottomator.be">
     <meta name="twitter:card" content="summary">
-    <meta name="theme-color" content="#000" />
+    <meta name="theme-color" content="#000">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
@@ -62,7 +62,8 @@
             <h1>
                 Ottomator
             </h1>
-            <a href="#about">Info</a>
+            <a href="#about" class="about-link" id="aboutLinkEN">Info</a>
+            <a href="#info" class="about-link" id="aboutLinkNL">Info</a>
         </header>
         <div class="main__content">
             <p class="name" id="name">
@@ -87,20 +88,35 @@
             </button>
         </div>
     </div>
-    <div class="about" id="about" lang="en">
+    <div class="about about--en" id="about">
         <div class="about__header">
             <h2>Info</h2>
             <a href="#main" class="js-toggle-about">Close</a>
-            <!-- <a href="#main" class="js-toggle-about">&times;</a> -->
         </div>
         <div class="about__content">
             <p>
-                Otto Coudeville is the son of Sarah &amp; Eewoud. He was born on July 16, 2022. He was about 51 cm tall
-                and weighed 3.730 kg.
+                <strong>Otto Coudeville</strong> is the son of <strong>Sarah Braet &amp; Eewoud Coudeville</strong>. He
+                was born on <strong>July 16, 2022</strong> and weighed about <strong>3.730 kg</strong>. The
+                <strong>Ottomator</strong> is an interactive birth card to celebrate the birth of this little guy.
+                Push the reload button <span class="desktop-only">or press 'r' </span>to generate a random
+                <strong>Otto</strong>.
             </p>
+        </div>
+    </div>
+    <div class="about about--nl" id="info" lang="nl">
+        <div class="about__header">
+            <h2>Info</h2>
+            <a href="#main" class="js-toggle-about">Sluit</a>
+        </div>
+        <div class="about__content">
             <p>
-                The Ottomator is an interactive birth card to celebrate the birth of this little guy. Push the reload
-                button <span class="desktop-only">or press 'r' </span>to generate a random Otto.
+                <strong>Otto Coudeville</strong> is de zoon van <strong>Sarah Braet &amp; Eewoud Coudeville</strong>.
+                Hij werd geboren op
+                <strong>22 juli 2022</strong> en woog ongeveer <strong>3,8 kilogram</strong>.
+                De <strong>Ottomator</strong> is een interactief kaartje om de geboorte van dit
+                <strong>kereltje</strong> te vieren. Duw op de
+                reload knop
+                <span class="desktop-only">of typ 'r' </span>om een willekeurige <strong>Otto</strong> te genereren.
             </p>
         </div>
     </div>
