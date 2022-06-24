@@ -334,7 +334,12 @@ a:focus-visible {
   --scaler: 5.65vw;
   font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
   -webkit-hyphens: auto;
+  -ms-hyphens: auto;
   hyphens: auto;
+  -webkit-hyphenate-limit-before: 3; /* For Safari */
+  -webkit-hyphenate-limit-after: 4; /* For Safari */
+  -ms-hyphenate-limit-chars: 10 3 4;
+  hyphenate-limit-chars: 10 3 4;
 }
 
 .about__content strong,
