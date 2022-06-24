@@ -81,6 +81,7 @@ a:any-link {
   border-radius: 2px;
   color: var(--link-color, var(--global-textColor));
   transition: color var(--global-duration-2) var(--global-easeInOut);
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:focus-visible,
@@ -332,19 +333,19 @@ a:focus-visible {
   --maxFontSize: 6rem;
   --scaler: 5.65vw;
   font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
-  /* font-variation-settings: "wght" 800, "wdth" 10; */
   -webkit-hyphens: auto;
   hyphens: auto;
 }
 
-.about__content strong {
+.about__content strong,
+.about__content a {
   font-variation-settings: "wght" 950, "wdth" 30;
 }
 
-/* 
+
 .about__content > * + * {
   margin-top: var(--whitespace);
-} */
+}
 
 .loading .about {
   visibility: hidden;
