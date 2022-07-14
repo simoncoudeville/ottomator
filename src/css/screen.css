@@ -6,9 +6,12 @@
 }
 
 :root {
-  --global-easeOut: cubic-bezier(0.23, 1, 0.32, 1); /* easeOutQuint */
-  --global-easeIn: cubic-bezier(0.47, 0, 0.76, 1); /* easeInQuint */
-  --global-easeInOut: cubic-bezier(0.86, 0, 0.07, 1); /* easeInOutQuint */
+  --global-easeOut: cubic-bezier(0.23, 1, 0.32, 1);
+  /* easeOutQuint */
+  --global-easeIn: cubic-bezier(0.47, 0, 0.76, 1);
+  /* easeInQuint */
+  --global-easeInOut: cubic-bezier(0.86, 0, 0.07, 1);
+  /* easeInOutQuint */
 
   --global-backgroundColor: #f7d0d2;
   --global-textColor: #4ea672;
@@ -336,8 +339,10 @@ a:focus-visible {
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
-  -webkit-hyphenate-limit-before: 3; /* For Safari */
-  -webkit-hyphenate-limit-after: 4; /* For Safari */
+  -webkit-hyphenate-limit-before: 3;
+  /* For Safari */
+  -webkit-hyphenate-limit-after: 4;
+  /* For Safari */
   -ms-hyphenate-limit-chars: 10 3 4;
   hyphenate-limit-chars: 10 3 4;
 }
@@ -348,8 +353,18 @@ a:focus-visible {
 }
 
 
-.about__content > * + * {
+.about__content>*+* {
   margin-top: var(--whitespace);
+}
+
+.about__arrow {
+  display: inline-block;
+  fill: currentColor;
+  --minFontSize: 1.55rem;
+  --maxFontSize: 4.5rem;
+  --scaler: 4.3vw;
+  width: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
+  height: auto;
 }
 
 .loading .about {
