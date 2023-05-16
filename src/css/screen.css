@@ -6,9 +6,15 @@
 }
 
 :root {
-  --global-easeOut: cubic-bezier(0.23, 1, 0.32, 1); /* easeOutQuint */
-  --global-easeIn: cubic-bezier(0.47, 0, 0.76, 1); /* easeInQuint */
-  --global-easeInOut: cubic-bezier(0.86, 0, 0.07, 1); /* easeInOutQuint */
+  --global-easeOut: cubic-bezier(0.23, 1, 0.32, 1);
+  /* easeOutQuint */
+  --global-easeIn: cubic-bezier(0.47, 0, 0.76, 1);
+  /* easeInQuint */
+  --global-easeInOut: cubic-bezier(0.86, 0, 0.07, 1);
+  /* easeInOutQuint */
+
+  --global-backgroundColor: #f7d0d2;
+  --global-textColor: #4ea672;
 
   --whitespace: calc(1rem + 2vw);
   --whitespace: calc(1rem + 1vw);
@@ -38,7 +44,8 @@
 html {
   will-change: color, background-color;
   font-family: "Antarctica Var Web", sans-serif;
-  font-variation-settings: "wght" 800, "wdth" 15;
+  /* font-variation-settings: "wght" 800, "wdth" 15; */
+  font-variation-settings: "wght" 750, "wdth" 10;
   text-transform: uppercase;
   color: var(--global-textColor);
   background-color: var(--global-backgroundColor);
@@ -77,6 +84,7 @@ a:any-link {
   border-radius: 2px;
   color: var(--link-color, var(--global-textColor));
   transition: color var(--global-duration-2) var(--global-easeInOut);
+  -webkit-tap-highlight-color: transparent;
 }
 
 button:focus-visible,
@@ -176,6 +184,9 @@ a:focus-visible {
   --maxFontSize: 55rem;
   --scaler: 80vw;
   font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
+  font-size: clamp(15rem, 7rem + 40vw, 55rem);
+  font-size: clamp(15rem, 5.588rem + 47.06vw, 55rem);
+  font-size: clamp(15rem, -3.824rem + 94.12vw, 55rem);
   display: inline-block;
   line-height: 0;
   /* text-transform: uppercase; */
@@ -281,7 +292,8 @@ a:focus-visible {
   /* clip-path: circle(0%); */
 }
 
-.open-about .about {
+.open-about-nl .about--nl,
+.open-about-en .about--en {
   opacity: 1;
   pointer-events: initial;
   /* transition-delay: var(--global-duration-1); */
@@ -297,6 +309,7 @@ a:focus-visible {
 .about__header {
   display: flex;
   justify-content: space-between;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
@@ -313,6 +326,7 @@ a:focus-visible {
   align-content: center;
   /* align-content: flex-start; */
   /* text-align: center; */
+  text-align: justify;
 }
 
 .about__content p {
@@ -322,12 +336,36 @@ a:focus-visible {
   --maxFontSize: 6rem;
   --scaler: 5.65vw;
   font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
   hyphens: auto;
+  -webkit-hyphenate-limit-before: 3;
+  /* For Safari */
+  -webkit-hyphenate-limit-after: 4;
+  /* For Safari */
+  -ms-hyphenate-limit-chars: 10 3 4;
+  hyphenate-limit-chars: 10 3 4;
 }
-/* 
-.about__content > * + * {
+
+.about__content strong,
+.about__content a {
+  font-variation-settings: "wght" 950, "wdth" 30;
+}
+
+
+.about__content>*+* {
   margin-top: var(--whitespace);
-} */
+}
+
+.about__arrow {
+  display: inline-block;
+  fill: currentColor;
+  --minFontSize: 1.55rem;
+  --maxFontSize: 4.5rem;
+  --scaler: 4.3vw;
+  width: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
+  height: auto;
+}
 
 .loading .about {
   visibility: hidden;

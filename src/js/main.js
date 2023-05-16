@@ -69,8 +69,8 @@ const setRandomColors = function () {
     document.documentElement.style.setProperty('--global-textColor', colors[1]);
 
     // save the colors to local storage
-    localStorage.setItem('backgroundColor', colors[0]);
-    localStorage.setItem('textColor', colors[1]);
+    // localStorage.setItem('backgroundColor', colors[0]);
+    // localStorage.setItem('textColor', colors[1]);
 }
 
 function setRandomFontProps() {
@@ -94,7 +94,7 @@ function setRandomFontProps() {
         // chars[i].style.setProperty('font-variation-settings', '"wght" ' + random(400, 800) + ', "wdth" ' + 1);
         chars[i].style.setProperty('font-variation-settings', '"wght" ' + wghts[i] + ', "wdth" ' + 1);
         // save every char font variation settings to a separate local storage variable                
-        localStorage.setItem('font-variation-settings-' + i, chars[i].style.fontVariationSettings);
+        // localStorage.setItem('font-variation-settings-' + i, chars[i].style.fontVariationSettings);
     }
 }
 
@@ -124,33 +124,35 @@ reloadButton.addEventListener('click', function () {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
 
-    // if local storage doesnt have a value for backgroundColor or textColor, set random colors
-    if (!localStorage.getItem('backgroundColor') || !localStorage.getItem('textColor')) {
-        setRandomColors();
-    } else {
-        // set the css variable for the background color
-        document.documentElement.style.setProperty('--global-backgroundColor', localStorage.getItem('backgroundColor'));
-        // set the css variable for the text color
-        document.documentElement.style.setProperty('--global-textColor', localStorage.getItem('textColor'));
-    }
+//     // if local storage doesnt have a value for backgroundColor or textColor, set random colors
+//     if (!localStorage.getItem('backgroundColor') || !localStorage.getItem('textColor')) {
+//         setRandomColors();
+//     } else {
+//         // set the css variable for the background color
+//         document.documentElement.style.setProperty('--global-backgroundColor', localStorage.getItem('backgroundColor'));
+//         // set the css variable for the text color
+//         document.documentElement.style.setProperty('--global-textColor', localStorage.getItem('textColor'));
+//     }
 
-});
+// });
 
 // remove the loading class from the html tag and add a minumum loading time of 1 second
 document.onreadystatechange = function () {
     if (document.readyState == "complete") {
 
         // if local storage doesnt have an item with a key that starts with font-variation-settings, set random font props
-        if (!localStorage.getItem('font-variation-settings-0')) {
-            setRandomFontProps();
-        } else {
-            // loop through all chars and set their font variation settings to the font variation settings from local storage
-            for (var i = 0; i < chars.length; i++) {
-                chars[i].style.setProperty('font-variation-settings', localStorage.getItem('font-variation-settings-' + i));
-            }
-        }
+        // if (!localStorage.getItem('font-variation-settings-0')) {
+        //     setRandomFontProps();
+        // } else {
+        //     // loop through all chars and set their font variation settings to the font variation settings from local storage
+        //     for (var i = 0; i < chars.length; i++) {
+        //         chars[i].style.setProperty('font-variation-settings', localStorage.getItem('font-variation-settings-' + i));
+        //     }
+        // }
+
+        setRandomFontProps();
 
         setTimeout(function () {
             document.querySelector('html').classList.remove('loading');
@@ -160,19 +162,46 @@ document.onreadystatechange = function () {
 
 // toggle about when #about is in the url
 if (window.location.hash === '#about') {
-    document.querySelector("body").classList.toggle("open-about");
+    document.querySelector("body").classList.toggle("open-about-en");
+    aboutIsOpen = true;
+}
+
+if (window.location.hash === '#info') {
+    document.querySelector("body").classList.toggle("open-about-nl");
     aboutIsOpen = true;
 }
 
 // toggle about when the back and forward buttons are pressed
 window.onpopstate = function (event) {
     if (window.location.hash === '#about') {
-        document.querySelector("body").classList.add("open-about");
+        document.querySelector("body").classList.add("open-about-en");
         aboutIsOpen = true;
-    } else {
-        document.querySelector("body").classList.remove("open-about");
+    } else if (window.location.hash === '#info') {
+        document.querySelector("body").classList.add("open-about-nl");
+        aboutIsOpen = true;
+    }
+    else {
+        document.querySelector("body").classList.remove("open-about-nl");
+        document.querySelector("body").classList.remove("open-about-en");
         aboutIsOpen = false;
     }
+}
+
+// check the language of the browser and hide about-link-nl if it is not nl
+if (navigator.language !== 'nl') {
+    document.querySelector("#aboutLinkNL").style.display = 'none';
+} else {
+    document.querySelector("#aboutLinkNL").style.display = 'block';
+    document.querySelector("#aboutLinkEN").style.display = 'none';
+}
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(new URL('../sw.js', import.meta.url)).then(reg => {
+        console.log('Registration successful', reg);
+    })
+        .catch(e => console.error('Error during service worker registration:', e));
+} else {
+    console.warn('Service Worker is not supported');
 }
 
 
