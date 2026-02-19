@@ -291,12 +291,11 @@ a:focus-visible {
   max-height: none;
   width: 100%;
   height: 100%;
-  min-height: 100dvh;
   min-height: 100vh;
+  min-height: 100dvh;
   padding: var(--whitespace);
   background-color: var(--about-backgroundColor);
   color: var(--about-textColor);
-  grid-template-rows: auto 1fr;
   gap: var(--whitespace);
   overflow: scroll;
   opacity: 0;
@@ -307,7 +306,8 @@ a:focus-visible {
 }
 
 .about[open] {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   opacity: 1;
 }
 
